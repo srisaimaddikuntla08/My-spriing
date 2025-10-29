@@ -11,5 +11,9 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 
+		int str = '3';
+		int con = str + '0';
+
+		System.out.println(con);
 	}
 }
