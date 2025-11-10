@@ -24,4 +24,5 @@ public class UserController {
     public ResponseEntity<String> createUser(@RequestBody UserEntity userEntity){
         return ResponseEntity.ok(userService.createUser(userEntity));
     }
+
 }
