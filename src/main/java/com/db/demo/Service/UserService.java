@@ -1,26 +1,27 @@
 package com.db.demo.Service;
 
-
-import com.db.demo.Entity.UserEntity;
+import com.db.demo.Model.UserModel;
+import com.db.demo.Repositary.UserRepositary;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Service
-public class UserService{
-    private final Map<Integer, UserEntity> userDB = new HashMap<>();
+public class UserService {
 
-    public Map<Integer,UserEntity> getAllUsers(){
-        return userDB;
+    private final UserRepositary userRepositary;
+    public UserService(UserRepositary userRepositary){
+        this.userRepositary= userRepositary;
     }
 
-    public String createUser(UserEntity userEntity){
-        if(userDB.containsKey(userEntity.getId())){
-            return "user already existed";
-        }else{
-            userDB.put(userEntity.getId(),userEntity);
-        }
+    public List<UserModel> getAllUsers(){
+        return userRepositary.findAll();
+    }
+
+    public String createUser(UserModel userModel){
+        userRepositary.save(userModel);
         return "user created";
     }
+
+
 }
